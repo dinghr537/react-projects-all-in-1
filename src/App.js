@@ -3,20 +3,19 @@ import { useRef, useState } from 'react'
 // import _ from 'lodash'
 // import classNames from 'classnames'
 
+function Son(props) {
+  console.log(props)
+  return <div>this is {props.name}</div>
+}
 
 function App() {
-  const inputRef = useRef(null)
+  const name = 'Jack'
 
-  const showDom = () => {
-    console.dir(inputRef.current)
-  }
+
 
   return (
     <div className="App">
-      <input 
-      type='text'
-      ref={inputRef}/>
-      <button onClick={showDom}>get dom</button>
+      <Son name={name} />
     </div>
   );
 }
