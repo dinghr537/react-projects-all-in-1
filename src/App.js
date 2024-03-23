@@ -79,6 +79,7 @@ const tabs = [
 const App = () => {
   const [commentList, setCommentList] = useState(_.orderBy(list, 'like', 'desc'))
   const [type, setType] = useState('hot')
+  const [content, setContent] = useState('')
 
   const handleDelete = (id) => {
     // console.log(id)
@@ -95,6 +96,23 @@ const App = () => {
       // based on time
       setCommentList(_.orderBy(commentList, 'ctime', 'desc'))
     }
+  }
+  
+  const handlePublish = () => {
+    setCommentList([
+      ...commentList,
+      {
+        rpid: 2,
+        user: {
+          uid: '36080105',
+          avatar: '',
+          uname: '许嵩',
+        },
+        content: content,
+        ctime: '11-13 11:29',
+        like: 88,
+      }
+    ])
   }
 
   return (
@@ -135,12 +153,14 @@ const App = () => {
           <div className="reply-box-wrap">
             {/* 评论框 */}
             <textarea
+              value={content}
+              onChange={(e)=>setContent(e.target.value)}
               className="reply-box-textarea"
               placeholder="发一条友善的评论"
             />
             {/* 发布按钮 */}
             <div className="reply-box-send">
-              <div className="send-text">发布</div>
+              <div className="send-text" onClick={handlePublish}>发布</div>
             </div>
           </div>
         </div>
