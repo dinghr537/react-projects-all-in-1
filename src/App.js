@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.scss'
 import avatar from './images/bozai.png'
+import _ from 'lodash'
 
 /**
  * 评论列表的渲染和操作
@@ -75,7 +76,7 @@ const tabs = [
 ]
 
 const App = () => {
-  const [commentList, setCommentList] = useState(list)
+  const [commentList, setCommentList] = useState(_.orderBy(list, 'like', 'desc'))
   const [type, setType] = useState('hot')
 
   const handleDelete = (id) => {
@@ -86,6 +87,13 @@ const App = () => {
   const handleTabChange = (type) => {
     console.log(type)
     setType(type)
+    if (type === 'hot') {
+      // based on like
+      setCommentList(_.orderBy(commentList, 'like', 'desc'))
+    } else {
+      // based on time
+      setCommentList(_.orderBy(commentList, 'ctime', 'desc'))
+    }
   }
 
   return (
