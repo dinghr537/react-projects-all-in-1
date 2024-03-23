@@ -76,10 +76,16 @@ const tabs = [
 
 const App = () => {
   const [commentList, setCommentList] = useState(list)
+  const [type, setType] = useState('hot')
 
   const handleDelete = (id) => {
     // console.log(id)
     setCommentList(commentList.filter(item => item.rpid !== id))
+  }
+
+  const handleTabChange = (type) => {
+    console.log(type)
+    setType(type)
   }
 
   return (
@@ -94,8 +100,15 @@ const App = () => {
           </li>
           <li className="nav-sort">
             {/* 高亮类名： active */}
-            <span className='nav-item'>最新</span>
-            <span className='nav-item'>最热</span>
+            {tabs.map(item => 
+            <span 
+              key={item.type} 
+              onClick={() => handleTabChange(item.type)} 
+              className={`nav-item ${type === item.type && 'active'}`}>
+                {item.text}
+            </span>)}
+            
+            
           </li>
         </ul>
       </div>
