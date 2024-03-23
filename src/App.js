@@ -3,26 +3,30 @@ import { useRef, useState } from 'react'
 // import _ from 'lodash'
 // import classNames from 'classnames'
 
-function Son(props) {
-  console.log(props)
+function Son({onGetSonMessage}) {
+  const message = 'message from the son'
   return (
     <div>
-      <div>this is {props.name}</div>
-      {props.children}
+      <div>this is the son</div>
+      <button onClick={()=>onGetSonMessage(message)}>click</button>
     </div>
   )
 }
 
 function App() {
-  const name = 'Jack'
+  const [value, setValue] = useState('god')
+
+  const getMessage = (message) => {
+    console.log(message)
+    setValue(message)
+  }
 
 
 
   return (
     <div className="App">
-      <Son name={name} >
-        <span>this is children</span>
-      </Son>
+      this is the {value}
+      <Son onGetSonMessage={getMessage} />
     </div>
   );
 }
