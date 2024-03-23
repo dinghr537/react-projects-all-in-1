@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+
+const count = 100
+const list = [
+  {id: 1001, name: 'Vue'},
+  {id: 1002, name: 'React'},
+  {id: 1003, name: 'Angular'},
+]
+
+function getName() {
+  return 'iris'
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      this is app
+      <ul>
+        {list.map( item => <li key={item.id}>{item.name}</li> )}
+      </ul>
     </div>
   );
 }
