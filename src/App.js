@@ -1,10 +1,5 @@
 
-const count = 100
-const list = [
-  {id: 1001, name: 'Vue'},
-  {id: 1002, name: 'React'},
-  {id: 1003, name: 'Angular'},
-]
+const isLogin = false
 
 function getName() {
   return 'iris'
@@ -13,10 +8,9 @@ function getName() {
 function App() {
   return (
     <div className="App">
-      this is app
-      <ul>
-        {list.map( item => <li key={item.id}>{item.name}</li> )}
-      </ul>
+      {/* this is app */}
+      {isLogin && <span>this is span</span>}
+      {isLogin ? <span>this is span</span> : <span>loading...</span>}
     </div>
   );
 }
