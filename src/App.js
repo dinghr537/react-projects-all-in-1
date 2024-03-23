@@ -77,6 +77,11 @@ const tabs = [
 const App = () => {
   const [commentList, setCommentList] = useState(list)
 
+  const handleDelete = (id) => {
+    // console.log(id)
+    setCommentList(commentList.filter(item => item.rpid !== id))
+  }
+
   return (
     <div className="app">
       {/* 导航 Tab */}
@@ -145,9 +150,11 @@ const App = () => {
                     <span className="reply-time">{item.ctime}</span>
                     {/* 评论数量 */}
                     <span className="reply-time">点赞数:{item.like}</span>
-                    <span className="delete-btn">
+                    {user.uid === item.user.uid && 
+                      <span onClick={() => handleDelete(item.rpid)} className="delete-btn">
                       删除
-                    </span>
+                      </span>}
+                    
 
                   </div>
                 </div>
