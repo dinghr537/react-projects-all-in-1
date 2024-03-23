@@ -1,17 +1,22 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 // import _ from 'lodash'
 // import classNames from 'classnames'
 
 
 function App() {
-  const [value, setValue] = useState('')
+  const inputRef = useRef(null)
+
+  const showDom = () => {
+    console.dir(inputRef.current)
+  }
 
   return (
     <div className="App">
       <input 
-      value={value}
-      onChange={(e)=>setValue(e.target.value)}/>
+      type='text'
+      ref={inputRef}/>
+      <button onClick={showDom}>get dom</button>
     </div>
   );
 }
