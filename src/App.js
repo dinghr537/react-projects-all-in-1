@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './App.scss'
 import avatar from './images/bozai.png'
 import _ from 'lodash'
@@ -82,6 +82,7 @@ const App = () => {
   const [commentList, setCommentList] = useState(_.orderBy(list, 'like', 'desc'))
   const [type, setType] = useState('hot')
   const [content, setContent] = useState('')
+  const inputRef = useRef(null)
 
   const handleDelete = (id) => {
     // console.log(id)
@@ -115,6 +116,9 @@ const App = () => {
         like: 88,
       }
     ])
+    //清空输入框
+    setContent('')
+    inputRef.current.focus()
   }
 
   return (
@@ -156,6 +160,7 @@ const App = () => {
             {/* 评论框 */}
             <textarea
               value={content}
+              ref={inputRef}
               onChange={(e)=>setContent(e.target.value)}
               className="reply-box-textarea"
               placeholder="发一条友善的评论"
