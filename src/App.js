@@ -5,7 +5,12 @@ import { useRef, useState } from 'react'
 
 function Son(props) {
   console.log(props)
-  return <div>this is {props.name}</div>
+  return (
+    <div>
+      <div>this is {props.name}</div>
+      {props.children}
+    </div>
+  )
 }
 
 function App() {
@@ -15,7 +20,9 @@ function App() {
 
   return (
     <div className="App">
-      <Son name={name} />
+      <Son name={name} >
+        <span>this is children</span>
+      </Son>
     </div>
   );
 }
