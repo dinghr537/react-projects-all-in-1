@@ -3,31 +3,32 @@ import { useContext, useEffect, useRef, useState } from 'react'
 
 const URL = "http://geek.itheima.net/v1_0/channels"
 
-function App() {
-  const [value, setvalue] = useState(0)
+function Son() {
+  useEffect(()=>{
 
-  // 没有依赖项: 初始+组建更新
-  useEffect(()=>{
-    console.log("Executed!")
-  })
-  // 空数组: 初始
-  useEffect(()=>{
-    console.log("Executed with []")
+    const timer = setInterval(()=>{
+      console.log("running")
+    }, 1000)
+
+    return ()=>{
+      clearInterval(timer)
+    }
   }, [])
+  return <div>Son</div>
+}
 
-  // 特定依赖项
-  useEffect(()=>{
-    console.log("Executed with [value]")
-  }, [value])
+function App() {
+  const [value, setvalue] = useState(true)
+
 
   const handleClick = () => {
-    setvalue(value+1)
+    setvalue(false)
   }
   return (
     <div className="App">
-      This is App.
-      count: {value}
-      <button onClick={handleClick}>click me</button>
+      <button onClick={handleClick}>卸载组件</button>
+      {value && <Son />}
+      
     </div>
   );
 }
