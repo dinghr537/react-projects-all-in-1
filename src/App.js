@@ -3,30 +3,42 @@ import { useRef, useState } from 'react'
 // import _ from 'lodash'
 // import classNames from 'classnames'
 
-function Son({onGetSonMessage}) {
-  const message = 'message from the son'
+function A(props) {
+  const name = "This is A name"
+  console.log(props.age)
   return (
     <div>
-      <div>this is the son</div>
-      <button onClick={()=>onGetSonMessage(message)}>click</button>
+      This is A.
+      <button onClick={()=>props.onGetAName(name)}>send</button>
+    </div>
+  )
+}
+
+function B(props) {
+  return (
+    <div>
+      This is B.
+      {props.name}
     </div>
   )
 }
 
 function App() {
-  const [value, setValue] = useState('god')
+  const [name, setName] = useState('')
 
-  const getMessage = (message) => {
-    console.log(message)
-    setValue(message)
+  const getAName = (name) => {
+    console.log(name)
+    setName(name)
   }
 
 
 
   return (
     <div className="App">
-      this is the {value}
-      <Son onGetSonMessage={getMessage} />
+      This is App.
+      <A onGetAName={getAName} age={20}/>
+      <B name={name}/>
+      
     </div>
   );
 }
