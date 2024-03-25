@@ -1,43 +1,39 @@
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 
-// import _ from 'lodash'
-// import classNames from 'classnames'
+import { createContext } from 'react'
 
-function A(props) {
-  const name = "This is A name"
-  console.log(props.age)
+const MsgContext = createContext()
+
+function A() {
+  
   return (
     <div>
       This is A.
-      <button onClick={()=>props.onGetAName(name)}>send</button>
+      <B />
     </div>
   )
 }
 
 function B(props) {
+  const message = useContext(MsgContext)
+
   return (
     <div>
-      This is B.
-      {props.name}
+      This is B. 
+      {message}
     </div>
   )
 }
 
 function App() {
-  const [name, setName] = useState('')
-
-  const getAName = (name) => {
-    console.log(name)
-    setName(name)
-  }
-
-
+  const message = "This is message"
 
   return (
     <div className="App">
-      This is App.
-      <A onGetAName={getAName} age={20}/>
-      <B name={name}/>
+      <MsgContext.Provider value={message}>
+        This is App.
+        <A />
+      </MsgContext.Provider>
       
     </div>
   );
