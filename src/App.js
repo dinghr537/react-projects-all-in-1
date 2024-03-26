@@ -1,33 +1,35 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 
 
-const URL = "http://geek.itheima.net/v1_0/channels"
+// 自定义hook
 
-function Son() {
-  useEffect(()=>{
-
-    const timer = setInterval(()=>{
-      console.log("running")
-    }, 1000)
-
-    return ()=>{
-      clearInterval(timer)
-    }
-  }, [])
-  return <div>Son</div>
-}
-
-function App() {
+function useToggle() {
   const [value, setvalue] = useState(true)
 
-
-  const handleClick = () => {
-    setvalue(false)
+  const toggle = () => {
+    setvalue(!value)
   }
+
+  return {
+    value,
+    toggle
+  }
+}
+
+
+function App() {
+  // const [value, setvalue] = useState(true)
+  // const toggle = () => {
+  //   setvalue(!value)
+  // }
+
+  const {value, toggle} = useToggle()
   return (
     <div className="App">
-      <button onClick={handleClick}>卸载组件</button>
-      {value && <Son />}
+      {/* <button onClick={toggle}>click me</button>
+      {value && <div>Here</div>} */}
+      <button onClick={toggle}>useToggle</button>
+      {value && <div>And here</div>}
       
     </div>
   );
