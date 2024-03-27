@@ -5,16 +5,20 @@ import axios from "axios"
 const foodSlice = createSlice({
     name: "foods",
     initialState: {
-        foodsList: []
+        foodsList: [],
+        activeIndex: 0
     },
     reducers: {
         setFoodsList(state, action) {
             state.foodsList = action.payload
+        },
+        setActiveIndex(state, action) {
+            state.activeIndex = action.payload
         }
     }
 })
 
-const { setFoodsList } = foodSlice.actions
+const { setFoodsList, setActiveIndex } = foodSlice.actions
 const url = "http://localhost:3004/takeaway"
 const fetchFoodsList = () => {
     return async (dispatch) => {
@@ -23,6 +27,6 @@ const fetchFoodsList = () => {
     }
 }
 
-export { fetchFoodsList }
+export { fetchFoodsList, setActiveIndex }
 const foodsReducer = foodSlice.reducer 
 export default foodsReducer
