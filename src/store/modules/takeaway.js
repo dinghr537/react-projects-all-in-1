@@ -23,11 +23,26 @@ const foodSlice = createSlice({
             } else {
                 state.cartList.push(action.payload)
             }
+        },
+        increCount(state, action) {
+            const item = state.cartList.find(item => item.id === action.payload.id)
+            item.count ++
+        },
+        decreCount(state, action) {
+            const item = state.cartList.find(item => item.id === action.payload.id)
+            if (item.count === 0) {
+                return
+            }
+            item.count --
+
+        },
+        clearCart(state) {
+            state.cartList = []
         }
     }
 })
 
-const { setFoodsList, setActiveIndex, addCart } = foodSlice.actions
+const { setFoodsList, setActiveIndex, addCart, increCount, decreCount, clearCart } = foodSlice.actions
 const url = "http://localhost:3004/takeaway"
 const fetchFoodsList = () => {
     return async (dispatch) => {
@@ -36,6 +51,6 @@ const fetchFoodsList = () => {
     }
 }
 
-export { fetchFoodsList, setActiveIndex, addCart }
+export { fetchFoodsList, setActiveIndex, addCart, increCount, decreCount, clearCart  }
 const foodsReducer = foodSlice.reducer 
 export default foodsReducer
