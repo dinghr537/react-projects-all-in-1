@@ -1,4 +1,7 @@
+import add from '@/test'
 
+const result = add(1, 2)
+console.log(result)
 
 function App() {
   return (
