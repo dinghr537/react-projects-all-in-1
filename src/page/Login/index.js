@@ -14,6 +14,10 @@ const Login = () => {
             <Link to="/article">go to article page</Link>
 
             <button onClick={()=>navigate('/article')}>go</button>
+
+            <button onClick={()=>navigate('/article?id=1001&name=jack')}>SearchParams参数</button>
+
+            <button onClick={()=>navigate('/article/1001/jack')}>params参数</button>
         </>
         
     )
