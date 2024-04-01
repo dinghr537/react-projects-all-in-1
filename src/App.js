@@ -1,38 +1,25 @@
-import { useContext, useEffect, useRef, useState } from 'react'
-
-
-// 自定义hook
-
-function useToggle() {
-  const [value, setvalue] = useState(true)
-
-  const toggle = () => {
-    setvalue(!value)
-  }
-
-  return {
-    value,
-    toggle
-  }
-}
-
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  // const [value, setvalue] = useState(true)
-  // const toggle = () => {
-  //   setvalue(!value)
-  // }
-
-  const {value, toggle} = useToggle()
   return (
     <div className="App">
-      {/* <button onClick={toggle}>click me</button>
-      {value && <div>Here</div>} */}
-      <button onClick={toggle}>useToggle</button>
-      {value && <div>And here</div>}
-      
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
 
-export default App
+export default App;
