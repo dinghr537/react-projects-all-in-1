@@ -1,7 +1,7 @@
 import { NavBar, DatePicker } from 'antd-mobile'
 import './index.scss'
 import { useSelector } from 'react-redux'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
 import _ from 'lodash'
@@ -30,6 +30,10 @@ const Month = () => {
       total: pay + income
     }
   }, [currentMonthList])
+
+  useEffect(() => {
+    setCurrentMonthList(monthGroup[dayjs().format('YYYY-MM')] || [])
+  }, [monthGroup])
 
   const onConfirm = (date) => {
     setDateVisible(false)
