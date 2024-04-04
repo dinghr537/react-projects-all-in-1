@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
 import _ from 'lodash'
+import DailyBill from './components/DailyBill'
 
 const Month = () => {
   const billList = useSelector(state => state.bill.billList)
@@ -35,6 +36,7 @@ const Month = () => {
     setCurrentMonthList(monthGroup[dayjs().format('YYYY-MM')] || [])
   }, [monthGroup])
 
+  // 时间选择器确认选择时间
   const onConfirm = (date) => {
     setDateVisible(false)
 
@@ -42,6 +44,16 @@ const Month = () => {
     setCurrentMonthList(monthGroup[formatDate] || [])
     setCurrentDate(formatDate)
   }
+
+  // 对当前月份的数据进行每日分组
+  const dailyGroup = useMemo(() => {
+    const groupData = _.groupBy(currentMonthList, (item)=>dayjs(item.date).format('YYYY-MM-DD'))
+    const keys = Object.keys(groupData)
+    return {
+      groupData,
+      keys
+    }
+  }, [currentMonthList])
 
 
 
@@ -86,6 +98,13 @@ const Month = () => {
             max={new Date()}
           />
         </div>
+
+        {/* 单日列表 */}
+        {
+          dailyGroup.keys.map(key => {
+            return <DailyBill key={key} date={key} billList={dailyGroup.groupData[key]}/>
+          })
+        }
       </div>
     </div >
   )
