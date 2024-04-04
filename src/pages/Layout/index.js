@@ -37,7 +37,7 @@ const Layout = () => {
   // 切换菜单跳转路由
   const navigate = useNavigate()
   const swithRoute = (path) => {
-    console.log(path)
+    // console.log(path)
     navigate(path)
   }
   return (
