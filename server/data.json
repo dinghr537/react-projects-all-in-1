@@ -104,6 +104,41 @@
       "money": -999,
       "date": "2024-04-05T22:19:07.018Z",
       "useFor": "dessert"
+    },
+    {
+      "id": "6e623ed7-1ed9-43c3-b1ef-8900d8d9a9d4",
+      "type": "pay",
+      "money": -112,
+      "date": "2024-04-05T23:12:36.890Z",
+      "useFor": "game"
+    },
+    {
+      "id": "7285aaf7-d565-40b9-97dd-5f98c761dd29",
+      "type": "income",
+      "money": 112,
+      "date": "2024-04-05T23:12:58.657Z",
+      "useFor": "cashgift"
+    },
+    {
+      "id": "c1cb8663-399b-4849-a693-3c93e9123127",
+      "type": "pay",
+      "money": -12,
+      "date": "2024-03-05T08:00:00.000Z",
+      "useFor": "drinks"
+    },
+    {
+      "id": "e641277c-da1d-49ea-8705-2ff60acd582e",
+      "type": "income",
+      "money": 333,
+      "date": "2024-04-05T23:25:06.565Z",
+      "useFor": "bonus"
+    },
+    {
+      "id": "b9b06c10-10f1-4eda-8724-c575360fcea6",
+      "type": "pay",
+      "money": -100,
+      "date": "2024-04-05T23:25:21.553Z",
+      "useFor": "book"
     }
   ]
 }
